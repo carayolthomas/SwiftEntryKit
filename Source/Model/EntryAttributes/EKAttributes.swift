@@ -79,6 +79,9 @@ public struct EKAttributes {
     /** Preferred status bar style while the entry shows */
     public var statusBar = StatusBar.inferred
     
+    /** Describes the behaviour of home indicator */
+    public var homeIndicatorBehaviour = HomeIndicator.alwaysVisible
+    
     // MARK: Animation Attributes
     
     /** Describes how the entry animates in */

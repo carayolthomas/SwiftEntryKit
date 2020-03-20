@@ -94,6 +94,13 @@ class EKRootViewController: UIViewController {
         return !(statusBar?.appearance.visible ?? previousStatusBar.appearance.visible)
     }
     
+    // Home indicator
+    private var isHomeIndicatorAutoHidden = false
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return isHomeIndicatorAutoHidden
+    }
+    
     // MARK: - Lifecycle
     
     required public init?(coder aDecoder: NSCoder) {
@@ -160,6 +167,11 @@ class EKRootViewController: UIViewController {
         
         if shouldAutorotate {
             UIViewController.attemptRotationToDeviceOrientation()
+        }
+        
+        if #available(iOS 11.0, *) {
+            isHomeIndicatorAutoHidden = attributes.homeIndicatorBehaviour.isAutoHidden
+            setNeedsUpdateOfHomeIndicatorAutoHidden()
         }
     }
         
